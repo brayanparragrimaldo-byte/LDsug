@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owlbox — Growth Marketing para Ecommerce | Método FIRE!</title>
+<meta name="description" content="Escalamos ecommerces con facturación mínima de USD 10.000 mensuales usando el Método FIRE!. Diagnóstico estratégico + ejecución en Meta, Google y TikTok Ads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #3E0F58;
+  --purple-mid: #7F7B9C;
+  --orange: #FF421E;
+  --teal: #2FC1A5;
+  --lime: #BBED20;
+  --white: #ffffff;
+  --off-white: #F8F6F2;
+  --dark: #0E0A14;
+  --gray-light: #EAE8F0;
+  --gray-mid: #9896A8;
+  --text-body: #2A2535;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+p { font-size: 1.05rem; line-height: 1.7; color: #4A4560; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-light);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--purple); letter-spacing: -0.5px; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-body); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--orange); }
+.nav-cta {
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 8px;
+  padding: 10px 20px; font-size: 0.875rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap; transition: transform .15s, background .2s;
+  font-family: 'Inter', sans-serif;
+}
+.nav-cta:hover { background: #e03610; transform: translateY(-1px); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 10px;
+  padding: 16px 32px; font-size: 1rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: transform .15s, box-shadow .2s, background .2s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-primary:hover { background: #e03610; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,66,30,.3); }
+.btn-secondary {
+  display: inline-block;
+  background: transparent; color: var(--purple);
+  border: 2px solid var(--purple); border-radius: 10px;
+  padding: 14px 28px; font-size: 1rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-secondary:hover { background: var(--purple); color: var(--white); }
+
+/* ── LAYOUT ── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
+section { padding: 80px 0; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--purple);
+  padding: 140px 0 100px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -40%; right: -15%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,66,30,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -20%; left: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(47,193,165,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--teal);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.hero h1 { color: var(--white); max-width: 760px; margin-bottom: 24px; }
+.hero h1 em { color: var(--orange); font-style: normal; }
+.hero p { color: rgba(255,255,255,0.75); max-width: 560px; font-size: 1.15rem; margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-btn-ghost {
+  display: inline-block;
+  background: transparent; color: var(--white);
+  border: 2px solid rgba(255,255,255,0.3); border-radius: 10px;
+  padding: 14px 28px; font-size: 1rem; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: border-color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.hero-btn-ghost:hover { border-color: rgba(255,255,255,0.7); }
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 64px;
+  padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.12);
+  flex-wrap: wrap;
+}
+.hero-stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--lime); display: block; }
+.hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); display: block; margin-top: 4px; }
+
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar { background: var(--off-white); padding: 28px 0; border-bottom: 1px solid var(--gray-light); }
+.proof-bar-inner { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-bar-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-mid); font-weight: 600; white-space: nowrap; }
+.proof-logos { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+.proof-logo-badge {
+  background: var(--white); border: 1px solid var(--gray-light);
+  border-radius: 8px; padding: 8px 16px;
+  font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+  color: var(--purple-mid);
+}
+
+/* ── PROBLEM ── */
+.problem { background: var(--white); }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.problem-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 16px; display: block; }
+.pain-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+.pain-item { display: flex; align-items: flex-start; gap: 12px; }
+.pain-x {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #FEE8E4; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.pain-text { font-size: 1rem; color: var(--text-body); line-height: 1.5; }
+.problem-visual {
+  background: var(--purple);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  position: relative; overflow: hidden;
+}
+.problem-visual::before {
+  content: '';
+  position: absolute; top: -30%; right: -20%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,66,30,0.2) 0%, transparent 70%);
+}
+.problem-quote {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem; font-weight: 700; color: var(--white);
+  line-height: 1.4; margin-bottom: 24px; position: relative;
+}
+.problem-quote::before {
+  content: '"';
+  font-size: 5rem; color: rgba(255,66,30,0.3);
+  position: absolute; top: -20px; left: -16px;
+  font-family: Georgia, serif;
+}
+.problem-author { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+.problem-dots { display: flex; gap: 8px; margin-top: 32px; }
+.problem-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: background .2s; }
+.problem-dot.active { background: var(--orange); }
+
+/* ── METHOD ── */
+.method { background: var(--off-white); }
+.method-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); font-weight: 700; margin-bottom: 16px; display: block; }
+.method-intro { max-width: 640px; margin: 0 auto 64px; text-align: center; }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.method-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-light);
+  padding: 36px;
+  transition: transform .2s, box-shadow .2s;
+}
+.method-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(62,15,88,0.1); }
+.method-card-accent {
+  background: var(--purple);
+}
+.method-step { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; display: block; }
+.method-card.method-card-accent .method-step { color: var(--lime); }
+.method-card h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); margin-bottom: 12px; }
+.method-card.method-card-accent h3 { color: var(--white); }
+.method-card p { font-size: 0.95rem; color: #6B6880; margin-bottom: 20px; }
+.method-card.method-card-accent p { color: rgba(255,255,255,0.6); }
+.method-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.method-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-body); }
+.method-card.method-card-accent .method-item { color: rgba(255,255,255,0.8); }
+.method-check { color: var(--teal); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+.method-card.method-card-accent .method-check { color: var(--lime); }
+.method-tag-bottom {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  border-radius: 100px; padding: 4px 12px;
+  font-size: 0.75rem; font-weight: 600;
+  margin-top: 24px;
+}
+
+/* ── CALCULATOR ── */
+.calculator { background: var(--purple); position: relative; overflow: hidden; }
+.calculator::before {
+  content: '';
+  position: absolute; top: -20%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(47,193,165,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.calculator-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.calc-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--lime); font-weight: 700; margin-bottom: 16px; display: block; }
+.calculator h2 { color: var(--white); margin-bottom: 16px; }
+.calculator > .container > .calculator-inner > div > p { color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+.calc-box {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+.calc-field { margin-bottom: 28px; }
+.calc-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+}
+.calc-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem; font-weight: 700; color: var(--lime);
+}
+input[type="range"] {
+  width: 100%; -webkit-appearance: none; appearance: none;
+  height: 4px; border-radius: 2px;
+  background: rgba(255,255,255,0.15); outline: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--orange); cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.calc-result {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding: 24px; margin-top: 28px;
+}
+.calc-result-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; }
+.calc-result-row + .calc-result-row { border-top: 1px solid rgba(255,255,255,0.08); }
+.calc-result-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+.calc-result-num { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
+.calc-result-num.highlight { color: var(--lime); font-size: 1.25rem; }
+.calc-cta { margin-top: 24px; width: 100%; text-align: center; padding: 16px; }
+
+/* ── PRICING ── */
+.pricing { background: var(--white); }
+.pricing-intro { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+.pricing-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 16px; display: block; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
+.pricing-card {
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  position: relative;
+}
+.pricing-card.featured {
+  border-color: var(--purple);
+  border-width: 2px;
+}
+.featured-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--purple); color: var(--white);
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 4px 16px; border-radius: 100px;
+}
+.pricing-plan-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); margin-bottom: 8px; display: block; }
+.pricing-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+.pricing-price { margin: 20px 0; }
+.price-main { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--purple); }
+.price-period { font-size: 0.9rem; color: var(--gray-mid); }
+.pricing-desc { font-size: 0.9rem; color: #6B6880; margin-bottom: 24px; line-height: 1.6; }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.pricing-feature { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-body); }
+.pricing-feature-check { color: var(--teal); font-weight: 700; flex-shrink: 0; }
+.pricing-note { font-size: 0.8rem; color: var(--gray-mid); margin-top: 16px; line-height: 1.5; }
+
+/* ── OBJECTIONS ── */
+.objections { background: var(--off-white); }
+.objections-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-mid); font-weight: 700; margin-bottom: 16px; display: block; text-align: center; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+.faq-item {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--gray-light);
+  padding: 28px;
+  cursor: pointer;
+  transition: box-shadow .2s;
+}
+.faq-item:hover { box-shadow: 0 4px 16px rgba(62,15,88,0.08); }
+.faq-q { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--purple); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.faq-toggle { color: var(--orange); font-size: 1.2rem; flex-shrink: 0; transition: transform .2s; }
+.faq-a { font-size: 0.9rem; color: #6B6880; line-height: 1.6; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+/* ── TEAM ── */
+.team { background: var(--white); }
+.team-intro { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+.team-tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); font-weight: 700; margin-bottom: 16px; display: block; text-align: center; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.team-card {
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.team-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(62,15,88,0.1); }
+.team-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white);
+}
+.team-role { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange); margin-bottom: 6px; display: block; }
+.team-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--purple); }
+.team-desc { font-size: 0.82rem; color: var(--gray-mid); margin-top: 8px; line-height: 1.5; }
+
+/* ── CTA FINAL ── */
+.cta-final {
+  background: linear-gradient(135deg, var(--purple) 0%, #1a0630 100%);
+  text-align: center; padding: 100px 0; position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: '';
+  position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,66,30,0.15) 0%, transparent 60%);
+}
+.cta-final h2 { color: var(--white); max-width: 600px; margin: 0 auto 16px; position: relative; }
+.cta-final p { color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 40px; font-size: 1.1rem; position: relative; }
+.cta-form {
+  max-width: 440px; margin: 0 auto;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+}
+.form-field { margin-bottom: 16px; }
+.form-field input, .form-field select {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.95rem; color: var(--white);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s;
+}
+.form-field input::placeholder { color: rgba(255,255,255,0.35); }
+.form-field input:focus, .form-field select:focus { border-color: rgba(255,66,30,0.6); }
+.form-field select option { background: var(--purple); color: var(--white); }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--orange); color: var(--white);
+  border: none; border-radius: 8px;
+  font-size: 1rem; font-weight: 700;
+  cursor: pointer; font-family: 'Inter', sans-serif;
+  transition: background .2s, transform .15s;
+  margin-top: 8px;
+}
+.form-submit:hover { background: #e03610; transform: translateY(-1px); }
+.form-micro { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 12px; text-align: center; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--white); }
+.footer-logo span { color: var(--orange); }
+.footer-text { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+.footer-note { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+/* ── UTILITY ── */
+.text-center { text-align: center; }
+.section-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 12px; display: block; }
+
+/* ── SUCCESS STATE ── */
+.form-success {
+  text-align: center;
+  display: none;
+}
+.form-success h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--white); margin-bottom: 12px; }
+.form-success p { color: rgba(255,255,255,0.65); font-size: 0.95rem; }
+.success-check { font-size: 3rem; margin-bottom: 16px; display: block; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .problem-grid, .method-grid, .calculator-inner, .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .hero-stats { gap: 32px; }
+}
+@media (max-width: 600px) {
+  section { padding: 60px 0; }
+  .hero { padding: 110px 0 80px; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .hero-btns { flex-direction: column; }
+  .hero-btns .btn-primary, .hero-btns .hero-btn-ghost { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">owl<span>box</span></div>
+  <ul class="nav-links">
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollToForm()">Diagnóstico gratuito</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">🔥 Método FIRE! — Focus · Insight · Results · Execution</div>
+    <h1>¿Tu ecommerce invierte en pauta pero no logra <em>escalar</em>?</h1>
+    <p>Antes de invertir un peso más, hacemos el diagnóstico que la mayoría de las agencias saltea. Método FIRE!: estrategia primero, ejecución después.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToForm()">Quiero mi diagnóstico gratuito →</button>
+      <a href="#metodo" class="hero-btn-ghost">Ver cómo funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">3.5x+</span>
+        <span class="hero-stat-label">ROAS promedio en mes 3</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">30 días</span>
+        <span class="hero-stat-label">Entrega del Research</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">3 canales</span>
+        <span class="hero-stat-label">Meta · Google · TikTok Ads</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">USD 10K+</span>
+        <span class="hero-stat-label">Facturación mínima recomendada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-bar-inner">
+      <span class="proof-bar-label">Certificaciones</span>
+      <div class="proof-logos">
+        <div class="proof-logo-badge">Meta Business Partner</div>
+        <div class="proof-logo-badge">Google Ads Certified</div>
+        <div class="proof-logo-badge">Shopify Partners</div>
+        <div class="proof-logo-badge">TikTok Ads Partner</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problema">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <span class="problem-tag">El problema</span>
+        <h2>El 90% de los ecommerces quema presupuesto por el mismo motivo</h2>
+        <p style="margin-top: 16px;">Inversión activa. Campañas corriendo. ROAS que no justifica el costo. El problema casi nunca es la pauta en sí — es la falta de estrategia antes de la pauta.</p>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-x">✕</div>
+            <span class="pain-text">Invertís en Meta y Google pero no sabés qué te rinde realmente</span>
+          </li>
+          <li class="pain-item">
+            <div class="pain-x">✕</div>
+            <span class="pain-text">Trabajaste con una agencia y no viste resultados concretos</span>
+          </li>
+          <li class="pain-item">
+            <div class="pain-x">✕</div>
+            <span class="pain-text">Cuando querés escalar, el ROAS se cae y no entendés por qué</span>
+          </li>
+          <li class="pain-item">
+            <div class="pain-x">✕</div>
+            <span class="pain-text">Recibís reportes llenos de métricas que no conectan con tu negocio</span>
+          </li>
+          <li class="pain-item">
+            <div class="pain-x">✕</div>
+            <span class="pain-text">Tus competidores crecen mientras tu facturación se estanca</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="problem-visual">
+          <div class="problem-quote" id="quote-text">"Contraté tres agencias distintas. Todas prometían resultados. Ninguna entendió realmente mi negocio antes de arrancar."</div>
+          <div class="problem-author" id="quote-author">— Dueño de ecommerce de indumentaria, Buenos Aires</div>
+          <div class="problem-dots">
+            <div class="problem-dot active" onclick="changeQuote(0)"></div>
+            <div class="problem-dot" onclick="changeQuote(1)"></div>
+            <div class="problem-dot" onclick="changeQuote(2)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="metodo">
+  <div class="container">
+    <div class="method-intro">
+      <span class="method-tag">La solución</span>
+      <h2>Diagnóstico primero. Ejecución después.</h2>
+      <p>El Método FIRE! divide el proceso en dos momentos. No empezamos a invertir en pauta hasta entender exactamente qué va a funcionar y por qué.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-step">Momento 1 — F + I</span>
+        <h3>Focus &amp; Insight<br><span style="color: var(--orange);">Research</span></h3>
+        <p>Diagnóstico estratégico completo del negocio. Sin suposiciones. Sin campañas genéricas.</p>
+        <ul class="method-items">
+          <li class="method-item"><span class="method-check">✓</span> Análisis de números actuales del negocio</li>
+          <li class="method-item"><span class="method-check">✓</span> Investigación de mercado y competencia</li>
+          <li class="method-item"><span class="method-check">✓</span> Definición de metas, KPIs y funnel</li>
+          <li class="method-item"><span class="method-check">✓</span> Estrategia de audiencias y segmentación</li>
+          <li class="method-item"><span class="method-check">✓</span> Plan de acción + brief creativo</li>
+          <li class="method-item"><span class="method-check">✓</span> Propuesta de Growth con presupuesto</li>
+        </ul>
+        <div style="margin-top: 20px; padding: 12px 16px; background: var(--off-white); border-radius: 8px; font-size: 0.85rem; color: var(--purple-mid);">
+          📄 Entregable en <strong>30 días</strong> · Pago único desde <strong>USD 1.500</strong>
+        </div>
+      </div>
+      <div class="method-card method-card-accent">
+        <span class="method-step">Momento 2 — R + E</span>
+        <h3>Results &amp; Execution<br><span style="color: var(--lime);">Growth</span></h3>
+        <p>Ejecución del plan. Campañas activas. Optimización semanal. Resultados medibles.</p>
+        <ul class="method-items">
+          <li class="method-item"><span class="method-check">✓</span> Campañas en Meta, Google y/o TikTok</li>
+          <li class="method-item"><span class="method-check">✓</span> Testing continuo de creativos y audiencias</li>
+          <li class="method-item"><span class="method-check">✓</span> Optimización semanal por ROAS</li>
+          <li class="method-item"><span class="method-check">✓</span> Escalado de lo que funciona</li>
+          <li class="method-item"><span class="method-check">✓</span> Producción de activos creativos</li>
+          <li class="method-item"><span class="method-check">✓</span> Reporte mensual + reunión de seguimiento</li>
+        </ul>
+        <div class="method-tag-bottom">Mínimo 3 meses · Desde USD 2.000/mes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calculator" id="calculadora">
+  <div class="container">
+    <div class="calculator-inner">
+      <div>
+        <span class="calc-tag">Calculadora</span>
+        <h2 style="color: var(--white);">¿Cuánto dinero estás dejando en la mesa?</h2>
+        <p>Ingresá tus datos actuales y mirá el gap entre lo que estás generando y lo que podrías generar con el Método FIRE!.</p>
+        <p style="margin-top: 24px; font-size: 0.85rem; color: rgba(255,255,255,0.4);">
+          El cálculo es estimativo basado en benchmarks del mercado de ecommerce con gestión profesional de pauta. Los resultados reales varían según industria, estacionalidad y presupuesto de pauta.
+        </p>
+      </div>
+      <div class="calc-box">
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>Inversión mensual en pauta</span>
+            <span class="calc-value" id="inversion-val">USD 3.000</span>
+          </div>
+          <input type="range" id="inversion" min="500" max="20000" step="500" value="3000" oninput="calcROAS()">
+        </div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span>Tu ROAS actual</span>
+            <span class="calc-value" id="roas-actual-val">2.0x</span>
+          </div>
+          <input type="range" id="roas-actual" min="0.5" max="5" step="0.1" value="2.0" oninput="calcROAS()">
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-row">
+            <span class="calc-result-label">Facturación atribuida actual</span>
+            <span class="calc-result-num" id="actual-rev">USD 6.000</span>
+          </div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Facturación potencial con FIRE! (ROAS 3.5x)</span>
+            <span class="calc-result-num highlight" id="potential-rev">USD 10.500</span>
+          </div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Diferencia mensual estimada</span>
+            <span class="calc-result-num highlight" id="diff-monthly">+ USD 4.500</span>
+          </div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Diferencia anual estimada</span>
+            <span class="calc-result-num" id="diff-annual">+ USD 54.000</span>
+          </div>
+        </div>
+        <button class="btn-primary calc-cta" onclick="scrollToForm()">
+          Quiero ese resultado →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="pricing-intro">
+      <span class="pricing-tag">Inversión</span>
+      <h2>Dos servicios. Un sistema de crecimiento.</h2>
+      <p>Empezás por el Research. Continuás con el Growth. Cada etapa tiene precio fijo y condiciones claras.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="pricing-plan-name">Primer paso</span>
+        <h3>Research — FIRE! F+I</h3>
+        <div class="pricing-price">
+          <span class="price-main">USD 1.500</span>
+          <span class="price-period"> · pago único</span>
+        </div>
+        <p class="pricing-desc">Diagnóstico estratégico completo. Sabés exactamente qué va a pasar antes de invertir un peso en pauta.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Análisis del negocio y mercado</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Estrategia, funnel y audiencias</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Plan de acción + brief creativo</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Propuesta de Growth incluida</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Entrega en 30 días</li>
+        </ul>
+        <button class="btn-secondary" style="width:100%;" onclick="scrollToForm()">Empezar con el Research</button>
+        <p class="pricing-note">Si cancelás antes de que iniciemos, devolvemos el 100% del pago. Sin preguntas.</p>
+      </div>
+      <div class="pricing-card featured">
+        <div class="featured-badge">Continúa con Growth</div>
+        <span class="pricing-plan-name">Ejecución mensual</span>
+        <h3>Growth — FIRE! R+E</h3>
+        <div class="pricing-price">
+          <span class="price-main">USD 2.000</span>
+          <span class="price-period"> / mes</span>
+        </div>
+        <p class="pricing-desc">Ejecución del plan del Research. Fee mensual con compromiso mínimo de 3 meses. El fee exacto se define al finalizar el Research.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Gestión de campañas en Meta + Google + TikTok</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Creativos publicitarios incluidos</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Optimización semanal por ROAS</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Reporte mensual de rendimiento</li>
+          <li class="pricing-feature"><span class="pricing-feature-check">✓</span> Reunión mensual de seguimiento</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;" onclick="scrollToForm()">Agendar diagnóstico gratuito</button>
+        <p class="pricing-note">El presupuesto de pauta es adicional y se gestiona desde tus cuentas. Los canales activos se definen en el Research.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="objections" id="faq">
+  <div class="container">
+    <span class="objections-tag">Preguntas frecuentes</span>
+    <h2 class="text-center" style="max-width: 560px; margin: 0 auto;">Lo que todo dueño de ecommerce pregunta antes de arrancar</h2>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Pueden garantizar un ROAS específico? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">No garantizamos un número específico porque el ROAS depende de variables externas: algoritmos, estacionalidad, presupuesto de pauta y competencia. Sí garantizamos gestión profesional continua, optimización semanal y transparencia total. Si considerás que el servicio no está siendo ejecutado correctamente, respondemos en 5 días hábiles.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Por qué hay que pagar el Research antes? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Porque necesitamos hacer el trabajo de diagnóstico real antes de comprometernos con cualquier número. Sin Research, estaríamos adivinando — y eso no es el Método FIRE!. Además, el Research tiene garantía de devolución del 100% si cancelás antes de que empecemos.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Qué pasa si quiero cancelar el Growth? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">El Growth tiene un compromiso mínimo de 3 meses. El primer mes es de configuración y aprendizaje, y los resultados de escala sostenida se consolidan en el mes 2-3. A partir del mes 4, podés cancelar con 45 días de preaviso.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Los creativos y la estrategia son míos? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Las cuentas publicitarias son siempre tuyas — conservás todo el historial y rendimiento al terminar. Los creativos y la estrategia son propiedad de Owlbox. Al finalizar, realizamos una transición ordenada que incluye el historial de campañas e informe de cierre.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Tienen experiencia en mi industria? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">El Método FIRE! funciona para ecommerces de cualquier rubro que facturen USD 10K+ mensuales. El Research permite adaptar la estrategia al mercado específico de cada cliente — eso es exactamente lo que hace diferente el proceso.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Cuánto tiempo hasta ver resultados? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">El mes 1 del Growth es de configuración, testing y optimización inicial. Los resultados de escala sostenida se consolidan a partir del mes 2-3. Por eso el compromiso mínimo es de 3 meses — es el tiempo mínimo para que el sistema funcione correctamente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <span class="team-tag">El equipo</span>
+    <div class="team-intro">
+      <h2>No una persona haciendo todo. Un equipo con roles definidos.</h2>
+      <p>Cada cliente tiene acceso a un equipo completo operando en su cuenta, con un líder de performance supervisando cada decisión.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background: var(--purple);">LP</div>
+        <span class="team-role">Estrategia</span>
+        <span class="team-name">Líder de Performance</span>
+        <p class="team-desc">Supervisión estratégica, control de calidad y decisiones de escala.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: var(--orange);">MB</div>
+        <span class="team-role">Ejecución</span>
+        <span class="team-name">Media Buyer</span>
+        <p class="team-desc">Gestión diaria de campañas, optimización y testing continuo.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: var(--teal);">PM</div>
+        <span class="team-role">Coordinación</span>
+        <span class="team-name">Project Manager</span>
+        <p class="team-desc">Seguimiento de entregables, plazos y comunicación con el cliente.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: #6B5CE7);">DIS</div>
+        <span class="team-role">Creativos</span>
+        <span class="team-name">Diseñador</span>
+        <p class="team-desc">Producción de activos publicitarios orientados a conversión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <div class="container">
+    <h2>El mejor momento para empezar era hace 6 meses.</h2>
+    <p>El Research tiene garantía de devolución antes del inicio. No hay razón para seguir esperando.</p>
+    <div class="cta-form" id="contact-form">
+      <div class="form-field">
+        <input type="text" id="f-name" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-field">
+        <input type="email" id="f-email" placeholder="Tu email de trabajo" required>
+      </div>
+      <div class="form-field">
+        <select id="f-revenue">
+          <option value="" disabled selected>Facturación mensual del ecommerce</option>
+          <option value="10-30k">USD 10.000 – 30.000</option>
+          <option value="30-80k">USD 30.000 – 80.000</option>
+          <option value="80k+">Más de USD 80.000</option>
+        </select>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Quiero mi diagnóstico gratuito →</button>
+      <p class="form-micro">Sin compromiso. Te contactamos en 24hs hábiles para coordinar la llamada.</p>
+    </div>
+    <div class="form-success" id="form-success">
+      <span class="success-check">🦉</span>
+      <h3>¡Recibimos tus datos!</h3>
+      <p>Te contactaremos en las próximas 24hs hábiles para coordinar tu llamada de diagnóstico gratuita.<br><br>Mientras tanto, seguinos en Instagram para ver más sobre el Método FIRE!.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">owl<span>box</span></div>
+      <div class="footer-text">Growth Marketing para Ecommerce — Método FIRE! · Córdoba, Argentina</div>
+      <div class="footer-note">© 2024 Owlbox S.A.S. · www.owlbox.io</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const quotes = [
+  { text: '"Contraté tres agencias distintas. Todas prometían resultados. Ninguna entendió realmente mi negocio antes de arrancar."', author: '— Dueño de ecommerce de indumentaria, Buenos Aires' },
+  { text: '"Invertía USD 5.000 por mes en Meta Ads y nunca podía calcular exactamente qué me estaba dando. Necesitaba alguien que me mostrara el número real."', author: '— Fundadora de ecommerce de cosmética, Colombia' },
+  { text: '"Cuando escalé el presupuesto, el ROAS se desplomó. Nadie en la agencia anterior supo decirme por qué."', author: '— CEO de tienda de electrónica, México' }
+];
+let currentQuote = 0;
+
+function changeQuote(i) {
+  currentQuote = i;
+  document.getElementById('quote-text').textContent = quotes[i].text;
+  document.getElementById('quote-author').textContent = quotes[i].author;
+  document.querySelectorAll('.problem-dot').forEach((d,j) => d.classList.toggle('active', j === i));
+}
+
+setInterval(() => changeQuote((currentQuote + 1) % quotes.length), 5000);
+
+function fmtUSD(n) {
+  return 'USD ' + Math.round(n).toLocaleString('es-AR');
+}
+
+function calcROAS() {
+  const inv = parseFloat(document.getElementById('inversion').value);
+  const raActual = parseFloat(document.getElementById('roas-actual').value);
+  const raMeta = 3.5;
+  const actual = inv * raActual;
+  const potential = inv * raMeta;
+  const diffM = potential - actual;
+  const diffA = diffM * 12;
+
+  document.getElementById('inversion-val').textContent = fmtUSD(inv);
+  document.getElementById('roas-actual-val').textContent = raActual.toFixed(1) + 'x';
+  document.getElementById('actual-rev').textContent = fmtUSD(actual);
+  document.getElementById('potential-rev').textContent = fmtUSD(potential);
+  document.getElementById('diff-monthly').textContent = (diffM >= 0 ? '+ ' : '') + fmtUSD(diffM);
+  document.getElementById('diff-annual').textContent = (diffA >= 0 ? '+ ' : '') + fmtUSD(diffA);
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+function scrollToForm() {
+  document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const rev = document.getElementById('f-revenue').value;
+  if (!name || !email || !rev) {
+    alert('Por favor completá todos los campos.');
+    return;
+  }
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+calcROAS();
+</script>
+</body>
+</html>
